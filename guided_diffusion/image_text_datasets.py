@@ -69,7 +69,7 @@ class CaptionedImageDataset(Dataset):
         
         captions = text.split("\n")
         if len(captions) > 1:
-            if random.random() < 0.5:
+            if random.random() < 0.3:
                 text = captions[0]
             else:
                 text = captions[1]
