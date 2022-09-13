@@ -66,7 +66,15 @@ class CaptionedImageDataset(Dataset):
 
         with bf.BlobFile(path[1], "r") as f:
             text = f.read().strip()
-
+        
+        captions = text.split("\n")
+        if len(captions) > 1:
+            if random.random() < 0.5:
+                text = captions[0]
+            else:
+                text = captions[1]
+        else:
+            text = captions[0]
         return np.transpose(arr, [2, 0, 1]), text
 
 
